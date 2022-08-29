@@ -1,0 +1,21 @@
+.Counter {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 400px;
+}
+
+.Counter__value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.Counter__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
