@@ -1,10 +1,13 @@
-import { Switch, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
 import SignupForm from './components/SignupForm/SignupForm';
 import ColorPicker from './components/ColorPicker/ColorPicker';
 import Counter from './components/Counter/Counter';
 import Clock from './components/Clock/Clock';
 import PokemonView from './views/PokemonView';
+import SkipEffectOnFirstRender from 'components/SkipEffectOnFirstRender';
+import Friends from 'components/Friends';
+import CounterReducer from 'components/CounterReducer/CounterReducer';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -28,27 +31,29 @@ export default function App() {
     <div style={containerStyles}>
       <AppBar />
 
-      <Switch>
-        <Route path="/signup">
-          <SignupForm />
-        </Route>
+      <Routes>
+        <Route
+          path="/skip-first-render"
+          element={<SkipEffectOnFirstRender />}
+        ></Route>
 
-        <Route path="/colorpicker">
-          <ColorPicker options={colorPickerOptions} />
-        </Route>
+        <Route path="/notes" element={<Friends />}></Route>
 
-        <Route path="/counter">
-          <Counter />
-        </Route>
+        <Route path="/signup" element={<SignupForm />}></Route>
 
-        <Route path="/clock">
-          <Clock />
-        </Route>
+        <Route
+          path="/colorpicker"
+          element={<ColorPicker options={colorPickerOptions} />}
+        ></Route>
 
-        <Route path="/pokemon">
-          <PokemonView />
-        </Route>
-      </Switch>
+        <Route path="/counterReducer" element={<CounterReducer />}></Route>
+
+        <Route path="/counter" element={<Counter />}></Route>
+
+        <Route path="/clock" element={<Clock />}></Route>
+
+        <Route path="/pokemon" element={<PokemonView />}></Route>
+      </Routes>
     </div>
   );
 }
